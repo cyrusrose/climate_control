@@ -1,0 +1,30 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyHome" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+<!--         <item name="colorOnSurface">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.MyHome" parent="Base.Theme.MyHome" />
+
+    <style name="Widget.App.CardView" parent="Widget.Material3.CardView.Outlined">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Card</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Card" parent="">
+<!--        <item name="colorSecondary">@color/shrine_pink_100</item>-->
+        <item name="colorSurface">@color/white</item>
+<!--        <item name="colorOnSurfaceVariant">@color/shrine_pink_900</item>-->
+    </style>
+
+    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSizeTopLeft">20dp</item>
+    </style>
+
+    <style name="ShapeAppearance.App.MediumComponent.Card" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+</resources>

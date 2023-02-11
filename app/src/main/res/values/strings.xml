@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyHome</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="title_report">Report</string>
+    <string name="title_qr">QR code</string>
+    <string name="title_enter">Enter</string>
+</resources>
