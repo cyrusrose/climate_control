@@ -39,8 +39,6 @@ class StatsFragment : Fragment() {
         setUpAdapter()
     }
 
-
-
     private fun setUpAdapter() {
         val cardAdapter = StatsAdapter(requireContext())
         cardAdapter.setClick {
@@ -55,7 +53,7 @@ class StatsFragment : Fragment() {
                 lifecycleScope.launch {
                     submitList(
                         withContext(coroutineContext + Dispatchers.Default) {
-                            (1..10).map { Stats(
+                            (1..20).map { Stats(
                                 id = it.toString(),
                                 name = "Temperature N$it",
                                 description = "Good temperature",

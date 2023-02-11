@@ -56,7 +56,7 @@ class FirstFragment : Fragment() {
                 lifecycleScope.launch {
                     submitList(
                         withContext(coroutineContext + Dispatchers.Default) {
-                            (1..50).map { Room(
+                            (1..12).map { Room(
                                 id = it.toString(),
                                 name ="Room $it",
                                 uri = Uri.parse("android.resource://${BuildConfig.APPLICATION_ID}/${R.drawable.fiber_cable}"),

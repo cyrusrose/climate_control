@@ -1,28 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-    <data>
-
-    </data>
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/stats_container"
+    android:layout_width="match_parent"
+    android:layout_height="220dp" >
 
     <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/view_back"
+        android:layout_marginVertical="16dp"
         android:layout_marginHorizontal="8dp"
-        android:layout_marginBottom="16dp"
         android:layout_width="match_parent"
-        android:layout_height="220dp" >
-
-        <include
-            android:id="@+id/back"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            layout="@layout/stats_back"/>
-
-        <include
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/front"
-            layout="@layout/stats_front"/>
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    <include
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/stats_back"/>
     </FrameLayout>
 
-</layout>
+    <FrameLayout
+        android:id="@+id/view_front"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="16dp"
+        android:layout_marginHorizontal="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/front"
+            layout="@layout/stats_front"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

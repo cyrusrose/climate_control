@@ -3,14 +3,19 @@ package com.arduino.access.view.ui.stats
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.animation.doOnEnd
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.arduino.access.R
 import com.arduino.access.databinding.StatsItemBinding
 import com.arduino.access.model.Stats
 import com.arduino.access.model.Values
+import com.arduino.access.view.ui.MyApplication
 
 class StatsAdapter(private val context: Context): ListAdapter<Stats, StatsAdapter.StatsViewHolder>(
     StatsDiff()
@@ -32,9 +37,30 @@ class StatsAdapter(private val context: Context): ListAdapter<Stats, StatsAdapte
         holder.bind(getItem(position))
     }
 
+    override fun onViewRecycled(holder: StatsViewHolder) {
+        super.onViewRecycled(holder)
+        Log.d(MyApplication.DEBUG, "recycled")
+        holder.clean()
+    }
+
+    override fun onViewDetachedFromWindow(holder: StatsViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        Log.d(MyApplication.DEBUG, "detached")
+    }
+
     inner class StatsViewHolder(
         private val ui: StatsItemBinding, private val click: Click?
     ) : RecyclerView.ViewHolder(ui.root) {
+
+        fun clean() {
+            ui.viewFront.alpha = 1F
+            ui.viewBack.alpha = 1F
+            ui.viewFront.rotationY = 0F
+            ui.viewBack.rotationY = 0F
+
+            ui.viewFront.isVisible = true
+            ui.viewBack.isVisible = false
+        }
 
         fun bindPayload(mValues: Values) {
             ui.front.apply {
@@ -46,22 +72,60 @@ class StatsAdapter(private val context: Context): ListAdapter<Stats, StatsAdapte
         fun bind(
             mStats: Stats
         ) {
-            val flipOut = AnimatorInflater.loadAnimator(context, R.animator.flip_out) as AnimatorSet
-            val flipIn = AnimatorInflater.loadAnimator(context, R.animator.flip_in) as AnimatorSet
-
 
             ui.front.apply {
                 stats = mStats
                 executePendingBindings()
-
-                card.setOnClickListener {
-                    click?.onClick(mStats)
-                }
             }
 
             ui.back.apply {
                 stats = mStats
                 executePendingBindings()
+            }
+
+            ui.statsContainer.apply {
+                Log.d(MyApplication.DEBUG, "here")
+                setOnClickListener {
+                    Log.d(MyApplication.DEBUG, "set")
+                    val visibleView = if (ui.viewFront.isVisible) ui.viewFront else ui.viewBack
+                    val invisibleView = if (!ui.viewFront.isVisible) ui.viewFront else ui.viewBack
+                    flipCard(visibleView, invisibleView)
+
+                    click?.onClick(mStats)
+                }
+            }
+        }
+
+        private fun flipCard(visibleView: View, invisibleView: View) {
+            try {
+                invisibleView.isVisible = true
+                val scale = context.resources.displayMetrics.density
+                val cameraDist = 12000 * scale
+                visibleView.cameraDistance = cameraDist
+                invisibleView.cameraDistance = cameraDist
+
+                val flipOutAnimatorSet =
+                    AnimatorInflater.loadAnimator(
+                        context,
+                        R.animator.flip_out
+                    ) as AnimatorSet
+                flipOutAnimatorSet.setTarget(visibleView)
+
+                val flipInAnimationSet =
+                    AnimatorInflater.loadAnimator(
+                        context,
+                        R.animator.flip_in
+                    ) as AnimatorSet
+                flipInAnimationSet.setTarget(invisibleView)
+
+                flipOutAnimatorSet.start()
+                flipInAnimationSet.start()
+
+                flipInAnimationSet.doOnEnd {
+                    visibleView.isVisible = false
+                }
+            } catch (e: Exception) {
+                Log.d(MyApplication.DEBUG, e.message ?: "No")
             }
         }
 

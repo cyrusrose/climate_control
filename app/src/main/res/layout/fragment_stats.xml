@@ -16,7 +16,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ab"
-        app:liftOnScrollTargetViewId="@id/nv"
+        app:liftOnScrollTargetViewId="@id/rv"
         android:layout_width="match_parent"
         app:liftOnScroll="true"
         android:layout_height="wrap_content" >
@@ -51,26 +51,20 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
         android:clipToPadding="false"
         android:paddingTop="40dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="8dp"
-        android:id="@+id/nv"
-        android:layout_width="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv"
-            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-            android:orientation="vertical"
-            android:scrollbars="vertical"
-            app:spanCount="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/stats_item" />
-    </androidx.core.widget.NestedScrollView>
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:orientation="vertical"
+        android:scrollbars="vertical"
+        app:spanCount="2"
+
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/stats_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

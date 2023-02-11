@@ -15,4 +15,8 @@ class MyApplication: Application(), ImageLoaderFactory {
             }
             .build()
     }
+
+    companion object {
+        const val DEBUG = "test"
+    }
 }
