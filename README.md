@@ -2,7 +2,7 @@
 
 A sample view-based project for the climate-control system
 <p align="center">
-<img src="/images/home.png"/>
+<img src="/images/home.jpg"/>
 </p>
 
 Climate Control System is a project to allow collecting and processing data from the climate control system. 
