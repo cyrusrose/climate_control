@@ -37,22 +37,19 @@ class StatsAdapter(private val context: Context): ListAdapter<Stats, StatsAdapte
         holder.bind(getItem(position))
     }
 
-    override fun onViewRecycled(holder: StatsViewHolder) {
-        super.onViewRecycled(holder)
-        Log.d(MyApplication.DEBUG, "recycled")
+    override fun onViewDetachedFromWindow(holder: StatsViewHolder) {
+        super.onViewDetachedFromWindow(holder)
         holder.clean()
     }
 
-    override fun onViewDetachedFromWindow(holder: StatsViewHolder) {
-        super.onViewDetachedFromWindow(holder)
-        Log.d(MyApplication.DEBUG, "detached")
-    }
-
     inner class StatsViewHolder(
-        private val ui: StatsItemBinding, private val click: Click?
+        private val ui: StatsItemBinding,
+        private val click: Click?
     ) : RecyclerView.ViewHolder(ui.root) {
+        private var isFlipFinished = true
 
         fun clean() {
+            isFlipFinished = true
             ui.viewFront.alpha = 1F
             ui.viewBack.alpha = 1F
             ui.viewFront.rotationY = 0F
@@ -72,7 +69,6 @@ class StatsAdapter(private val context: Context): ListAdapter<Stats, StatsAdapte
         fun bind(
             mStats: Stats
         ) {
-
             ui.front.apply {
                 stats = mStats
                 executePendingBindings()
@@ -84,12 +80,13 @@ class StatsAdapter(private val context: Context): ListAdapter<Stats, StatsAdapte
             }
 
             ui.statsContainer.apply {
-                Log.d(MyApplication.DEBUG, "here")
                 setOnClickListener {
-                    Log.d(MyApplication.DEBUG, "set")
-                    val visibleView = if (ui.viewFront.isVisible) ui.viewFront else ui.viewBack
-                    val invisibleView = if (!ui.viewFront.isVisible) ui.viewFront else ui.viewBack
-                    flipCard(visibleView, invisibleView)
+                    if (isFlipFinished) {
+                        isFlipFinished = false
+                        val visibleView = if (ui.viewFront.isVisible) ui.viewFront else ui.viewBack
+                        val invisibleView = if (!ui.viewFront.isVisible) ui.viewFront else ui.viewBack
+                        flipCard(visibleView, invisibleView)
+                    }
 
                     click?.onClick(mStats)
                 }
@@ -100,7 +97,7 @@ class StatsAdapter(private val context: Context): ListAdapter<Stats, StatsAdapte
             try {
                 invisibleView.isVisible = true
                 val scale = context.resources.displayMetrics.density
-                val cameraDist = 12000 * scale
+                val cameraDist = 12_000 * scale
                 visibleView.cameraDistance = cameraDist
                 invisibleView.cameraDistance = cameraDist
 
@@ -123,6 +120,7 @@ class StatsAdapter(private val context: Context): ListAdapter<Stats, StatsAdapte
 
                 flipInAnimationSet.doOnEnd {
                     visibleView.isVisible = false
+                    isFlipFinished = true
                 }
             } catch (e: Exception) {
                 Log.d(MyApplication.DEBUG, e.message ?: "No")
