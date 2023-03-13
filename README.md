@@ -6,7 +6,7 @@ A sample view-based project for the climate-control system
 </p>
 
 Climate Control System is a project to allow collecting and processing data from the climate control system. 
-A current version is `0.2 Alpha`.
+The current stage is `prototyping`.
 
 In this branch you'll find:
 * User Interface built with **Views** and **[Data Binding](https://developer.android.com/topic/libraries/data-binding)**.
