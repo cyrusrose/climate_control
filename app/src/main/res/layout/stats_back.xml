@@ -6,7 +6,7 @@
     <data>
         <variable
             name="stats"
-            type="com.arduino.access.model.Stats" />
+            type="com.arduino.access.stats.domain.model.Stats" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

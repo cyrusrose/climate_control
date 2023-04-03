@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.arduino.access.view.ui.MainActivity">
+    tools:context="com.arduino.access.core.presentation.MainActivity">
     <item
         android:id="@+id/report"
         android:icon="@drawable/ic_bar_chart"

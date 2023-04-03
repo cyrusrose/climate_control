@@ -1,4 +1,4 @@
-package com.arduino.access.model
+package com.arduino.access.stats.domain.model
 
 import android.net.Uri
 

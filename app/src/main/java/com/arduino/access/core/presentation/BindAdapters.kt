@@ -1,4 +1,4 @@
-package com.arduino.access.view.ui
+package com.arduino.access.core
 
 import android.graphics.drawable.Drawable
 import android.net.Uri
@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.arduino.access.model.Values
+import com.arduino.access.stats.domain.model.Values
 
 @BindingAdapter("srcUrl", "circleCrop", "placeholder", requireAll = false)
 fun ImageView.bindSrcUrl(

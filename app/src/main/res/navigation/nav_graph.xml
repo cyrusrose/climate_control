@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/first_fragment"
-        android:name="com.arduino.access.view.ui.room.FirstFragment"
+        android:name="com.arduino.access.room.presentation.FirstFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_first">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/statsFragment"
-        android:name="com.arduino.access.view.ui.stats.StatsFragment"
+        android:name="com.arduino.access.stats.presentation.StatsFragment"
         android:label="fragment_stats"
         tools:layout="@layout/fragment_stats" >
 

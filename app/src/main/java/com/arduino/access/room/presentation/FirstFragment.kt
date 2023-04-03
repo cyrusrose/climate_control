@@ -1,4 +1,4 @@
-package com.arduino.access.view.ui.room
+package com.arduino.access.room.presentation
 
 import android.net.Uri
 import android.os.Bundle
@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView.*
 import com.arduino.access.BuildConfig
 import com.arduino.access.R
 import com.arduino.access.databinding.FragmentFirstBinding
-import com.arduino.access.model.Room
+import com.arduino.access.room.domain.model.Room
 import dev.chrisbanes.insetter.applyInsetter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -61,7 +61,8 @@ class FirstFragment : Fragment() {
                                 name ="Room $it",
                                 uri = Uri.parse("android.resource://${BuildConfig.APPLICATION_ID}/${R.drawable.fiber_cable}"),
                                 details = "Something pretty long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long"
-                            )}
+                            )
+                            }
                         }
                     )
                 }

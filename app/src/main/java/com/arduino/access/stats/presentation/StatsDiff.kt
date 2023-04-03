@@ -1,7 +1,7 @@
-package com.arduino.access.view.ui.stats
+package com.arduino.access.stats.presentation
 
 import androidx.recyclerview.widget.DiffUtil
-import com.arduino.access.model.Stats
+import com.arduino.access.stats.domain.model.Stats
 
 class StatsDiff: DiffUtil.ItemCallback<Stats>() {
     override fun areItemsTheSame(oldItem: Stats, newItem: Stats) =

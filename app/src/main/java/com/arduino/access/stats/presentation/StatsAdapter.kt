@@ -1,4 +1,4 @@
-package com.arduino.access.view.ui.stats
+package com.arduino.access.stats.presentation
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.arduino.access.R
 import com.arduino.access.databinding.StatsItemBinding
-import com.arduino.access.model.Stats
-import com.arduino.access.model.Values
-import com.arduino.access.view.ui.MyApplication
+import com.arduino.access.stats.domain.model.Stats
+import com.arduino.access.stats.domain.model.Values
+import com.arduino.access.core.MyApplication
 
 class StatsAdapter(private val context: Context): ListAdapter<Stats, StatsAdapter.StatsViewHolder>(
     StatsDiff()

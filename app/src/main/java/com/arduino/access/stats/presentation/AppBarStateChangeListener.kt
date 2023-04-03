@@ -1,4 +1,4 @@
-package com.arduino.access.view.ui.stats
+package com.arduino.access.stats.presentation
 
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener

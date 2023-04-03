@@ -1,4 +1,4 @@
-package com.arduino.access.view.ui
+package com.arduino.access.core.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

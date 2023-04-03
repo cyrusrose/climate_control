@@ -1,4 +1,4 @@
-package com.arduino.access.view.ui.stats
+package com.arduino.access.stats.presentation
 
 import android.net.Uri
 import android.os.Bundle
@@ -12,7 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.arduino.access.BuildConfig
 import com.arduino.access.R
 import com.arduino.access.databinding.FragmentStatsBinding
-import com.arduino.access.model.Stats
+import com.arduino.access.stats.domain.model.Stats
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -59,7 +59,8 @@ class StatsFragment : Fragment() {
                                 description = "Good temperature",
                                 pattern = "%.2f C",
                                 uri = Uri.parse("android.resource://${BuildConfig.APPLICATION_ID}/${R.drawable.fiber_cable}")
-                            )}
+                            )
+                            }
                         }
                     )
                 }

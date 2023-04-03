@@ -1,16 +1,12 @@
-package com.arduino.access.view.ui.room
+package com.arduino.access.room.presentation
 
-import android.animation.LayoutTransition
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.AutoTransition
-import androidx.transition.TransitionManager
-import androidx.transition.Visibility
 import com.arduino.access.databinding.RoomItemBinding
-import com.arduino.access.model.Room
+import com.arduino.access.room.domain.model.Room
 
 class RoomsAdapter: ListAdapter<Room, RoomsAdapter.RoomViewHolder>(RoomDiff()) {
     private var _click: Click? = null

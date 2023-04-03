@@ -7,7 +7,7 @@
   <data>
     <variable
         name="room"
-        type="com.arduino.access.model.Room" />
+        type="com.arduino.access.room.domain.model.Room" />
 
     <variable
         name="payload"

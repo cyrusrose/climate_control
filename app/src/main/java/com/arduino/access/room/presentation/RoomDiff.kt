@@ -1,7 +1,7 @@
-package com.arduino.access.view.ui.room
+package com.arduino.access.room.presentation
 
 import androidx.recyclerview.widget.DiffUtil
-import com.arduino.access.model.Room
+import com.arduino.access.room.domain.model.Room
 
 class RoomDiff: DiffUtil.ItemCallback<Room>() {
     override fun areItemsTheSame(oldItem: Room, newItem: Room) =

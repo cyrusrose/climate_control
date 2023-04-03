@@ -1,4 +1,4 @@
-package com.arduino.access.view.ui
+package com.arduino.access.core
 
 import android.app.Application
 import coil.ImageLoader

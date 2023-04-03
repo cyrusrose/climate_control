@@ -6,10 +6,10 @@
     <data>
         <variable
             name="stats"
-            type="com.arduino.access.model.Stats" />
+            type="com.arduino.access.stats.domain.model.Stats" />
         <variable
             name="values"
-            type="com.arduino.access.model.Values" />
+            type="com.arduino.access.stats.domain.model.Values" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
