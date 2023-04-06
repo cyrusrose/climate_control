@@ -22,10 +22,10 @@ In this branch you'll find:
 
 First fragment
 <p align="center">
-<img src="/images/first.gif" width="25%" />
+<img src="/images/first.gif" width="40%" />
 </p>
 
 Second fragment
 <p align="center">
-<img src="/images/second.gif" width="25%" />
+<img src="/images/second.gif" width="40%" />
 </p>
