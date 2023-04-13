@@ -41,7 +41,7 @@
           app:layout_constraintTop_toTopOf="parent"
           app:placeholder="@{@drawable/image_placeholder}"
           app:shapeAppearance="@style/ShapeAppearance.App.MediumComponent.Card"
-          app:srcUrl="@{ room.uri }"
+          app:srcUrl="@{ room.resp.url }"
           tools:src="@drawable/fiber_cable" />
 
       <View
@@ -74,7 +74,7 @@
           android:layout_marginTop="16dp"
           android:ellipsize="end"
           android:maxLines="1"
-          android:text="@{ room.name }"
+          android:text="@{ room.resp.name }"
           android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
           app:layout_constraintEnd_toStartOf="@id/info"
           app:layout_constraintStart_toEndOf="@+id/image"
@@ -91,7 +91,7 @@
           android:layout_marginHorizontal="16dp"
           android:ellipsize="end"
           android:maxLines="4"
-          android:text="@{ room.details }"
+          android:text="@{ room.resp.details }"
           android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toEndOf="@+id/image"

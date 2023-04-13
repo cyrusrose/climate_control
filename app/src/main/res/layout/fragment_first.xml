@@ -42,6 +42,12 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <androidx.recyclerview.widget.RecyclerView
         app:behavior_overlapTop="48dp"
         android:id="@+id/rv"
@@ -55,8 +61,7 @@
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fab"
-        app:layout_anchor="@id/rv"
-        app:layout_anchorGravity="end|bottom"
+        android:layout_gravity="end|bottom"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="16dp"
         android:baselineAlignBottom="false"

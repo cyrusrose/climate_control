@@ -16,6 +16,7 @@ import com.arduino.access.databinding.StatsItemBinding
 import com.arduino.access.stats.domain.model.Stats
 import com.arduino.access.stats.domain.model.Values
 import com.arduino.access.core.MyApplication
+import com.arduino.access.utils.DEBUG
 
 class StatsAdapter(private val context: Context): ListAdapter<Stats, StatsAdapter.StatsViewHolder>(
     StatsDiff()
@@ -123,7 +124,7 @@ class StatsAdapter(private val context: Context): ListAdapter<Stats, StatsAdapte
                     isFlipFinished = true
                 }
             } catch (e: Exception) {
-                Log.d(MyApplication.DEBUG, e.message ?: "No")
+                Log.d(DEBUG, e.message ?: "No")
             }
         }
 

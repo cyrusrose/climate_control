@@ -1,7 +1,6 @@
-package com.arduino.access.core
+package com.arduino.access.core.presentation
 
 import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -11,7 +10,7 @@ import com.arduino.access.stats.domain.model.Values
 
 @BindingAdapter("srcUrl", "circleCrop", "placeholder", requireAll = false)
 fun ImageView.bindSrcUrl(
-    uri: Uri,
+    uri: String,
     circleCrop: Boolean,
     holder: Drawable?
 ) {

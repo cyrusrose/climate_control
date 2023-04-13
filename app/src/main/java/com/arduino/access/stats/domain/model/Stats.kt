@@ -7,7 +7,7 @@ data class Stats(
     val name: String,
     val description: String,
     val pattern: String,
-    val uri: Uri,
+    val uri: String,
     val minValue: Float? = null
 )
 

@@ -58,7 +58,7 @@ class StatsFragment : Fragment() {
                                 name = "Temperature N$it",
                                 description = "Good temperature",
                                 pattern = "%.2f C",
-                                uri = Uri.parse("android.resource://${BuildConfig.APPLICATION_ID}/${R.drawable.fiber_cable}")
+                                uri = "android.resource://${BuildConfig.APPLICATION_ID}/${R.drawable.fiber_cable}"
                             )
                             }
                         }
