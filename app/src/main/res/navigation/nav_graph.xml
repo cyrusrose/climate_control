@@ -22,6 +22,9 @@
         tools:layout="@layout/fragment_stats" >
 
         <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
             android:name="room"
             app:argType="string" />
     </fragment>

@@ -1,14 +1,10 @@
 package com.arduino.access.stats.domain.model
 
-import android.net.Uri
+import com.arduino.access.stats.data.StatsResp
 
 data class Stats(
-    val id: String,
-    val name: String,
-    val description: String,
-    val pattern: String,
-    val uri: String,
-    val minValue: Float? = null
+    val id: String? = null,
+    val resp: StatsResp
 )
 
 data class Values(val value: Float)

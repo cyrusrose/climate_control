@@ -19,7 +19,9 @@ class RoomRep(
                 Room(room.key!!, room.getValue<RoomResp>()!!)
             }
             emit(Resource.Success(res))
-        } else if (it is Resource.Error)
+        }
+
+        if (it is Resource.Error)
             emit(Resource.Error(it.message))
     }
 }

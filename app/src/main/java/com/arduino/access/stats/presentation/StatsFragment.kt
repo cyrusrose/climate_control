@@ -1,11 +1,13 @@
 package com.arduino.access.stats.presentation
 
-import android.net.Uri
-import android.os.Bundle
+import  android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -14,13 +16,19 @@ import com.arduino.access.R
 import com.arduino.access.databinding.FragmentStatsBinding
 import com.arduino.access.stats.domain.model.Stats
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.snackbar.Snackbar
+import com.it.access.util.Resource
+import com.it.access.util.collectLatestLifecycleFlow
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+@AndroidEntryPoint
 class StatsFragment : Fragment() {
     private lateinit var ui: FragmentStatsBinding
     private val args: StatsFragmentArgs by navArgs()
+    private val vm: StatsVm by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,35 +43,35 @@ class StatsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         applyInsets()
 
+        displayErrors()
         setUpToolBar()
         setUpAdapter()
     }
 
-    private fun setUpAdapter() {
-        val cardAdapter = StatsAdapter(requireContext())
-        cardAdapter.setClick {
-
+    private fun displayErrors() {
+        viewLifecycleOwner.collectLatestLifecycleFlow(vm.error) {
+            Snackbar.make(ui.root, it.asString(requireContext()), Snackbar.LENGTH_SHORT)
+                .show()
         }
+    }
 
+    private fun setUpAdapter() {
+        vm.setRoomName(args.id)
+
+        val cardAdapter = StatsAdapter(requireContext())
 
         ui.rv.apply {
             adapter = cardAdapter
+        }
 
-            cardAdapter.apply {
-                lifecycleScope.launch {
-                    submitList(
-                        withContext(coroutineContext + Dispatchers.Default) {
-                            (1..20).map { Stats(
-                                id = it.toString(),
-                                name = "Temperature N$it",
-                                description = "Good temperature",
-                                pattern = "%.2f C",
-                                uri = "android.resource://${BuildConfig.APPLICATION_ID}/${R.drawable.fiber_cable}"
-                            )
-                            }
-                        }
-                    )
-                }
+        viewLifecycleOwner.collectLatestLifecycleFlow(vm.stats) {
+            if (it is Resource.Success) {
+                ui.progress.isVisible = false
+                ui.rv.isVisible = true
+                cardAdapter.submitList(it.data)
+            } else {
+                ui.progress.isVisible = true
+                ui.rv.isVisible = false
             }
         }
     }

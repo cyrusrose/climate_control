@@ -69,6 +69,7 @@ class FirstFragment : Fragment() {
 
         cardAdapter.setClick {
             val act = FirstFragmentDirections.actionFirstFragmentToStatsFragment(
+                it.id,
                 it.resp.name
             )
             findNavController().navigate(act)
